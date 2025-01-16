@@ -54,6 +54,13 @@
   margin: 28px 0 0;
 }
 
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: solid;
+  margin: 28px auto 0;
+  padding: 0;
+}
+
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
     min-height: 808px;

@@ -1338,7 +1338,7 @@
 }
 
 .u-section-4 .u-layout-cell-2 {
-  min-height: 402px;
+  min-height: 403px;
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 300px;
   --animation-custom_in-opacity: 0;
@@ -1355,12 +1355,16 @@
 }
 
 .u-section-4 .u-text-3 {
+  margin: -1px 0 0;
+}
+
+.u-section-4 .u-text-4 {
   font-size: 0.875rem;
-  margin: 21px 0 0;
+  margin: 15px 0 0;
 }
 
 .u-section-4 .u-layout-cell-3 {
-  min-height: 262px;
+  min-height: 287px;
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 300px;
   --animation-custom_in-opacity: 0;
@@ -1372,13 +1376,17 @@
   padding: 30px;
 }
 
-.u-section-4 .u-text-4 {
+.u-section-4 .u-text-5 {
   margin: 24px 0 0;
 }
 
-.u-section-4 .u-text-5 {
+.u-section-4 .u-text-6 {
+  margin: 0;
+}
+
+.u-section-4 .u-text-7 {
   font-size: 0.875rem;
-  margin: 21px 0 0;
+  margin: 13px 0 0;
 }
 
 .u-section-4 .u-layout-cell-4 {
@@ -1424,7 +1432,7 @@
 }
 
 .u-section-4 .u-layout-cell-6 {
-  min-height: 288px;
+  min-height: 330px;
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 300px;
   --animation-custom_in-opacity: 0;
@@ -1436,11 +1444,15 @@
   padding: 16px 30px;
 }
 
-.u-section-4 .u-text-6 {
+.u-section-4 .u-text-8 {
   margin: 33px 0 0;
 }
 
-.u-section-4 .u-text-7 {
+.u-section-4 .u-text-9 {
+  margin: 0;
+}
+
+.u-section-4 .u-text-10 {
   font-size: 0.875rem;
   margin: 15px 0 0;
 }
@@ -1474,10 +1486,6 @@
     height: -17px;
   }
 
-  .u-section-4 .u-layout-cell-2 {
-    min-height: 269px;
-  }
-
   .u-section-4 .u-text-2 {
     --animation-custom_in-translate_x: 0px;
     --animation-custom_in-translate_y: 0px;
@@ -1486,7 +1494,7 @@
     --animation-custom_in-scale: 0.3;
   }
 
-  .u-section-4 .u-text-3 {
+  .u-section-4 .u-text-4 {
     transition-duration: 0.5s;
     transform: rotate(0deg) scale(1) translateX(0px) translateY(0px);
     --animation-custom_in-translate_x: 0px;
@@ -1494,10 +1502,6 @@
     --animation-custom_in-opacity: 0;
     --animation-custom_in-rotate: -360deg;
     --animation-custom_in-scale: 0.3;
-  }
-
-  .u-section-4 .u-layout-cell-3 {
-    min-height: 185px;
   }
 
   .u-section-4 .u-layout-cell-4 {
@@ -1537,7 +1541,6 @@
 
   .u-section-4 .u-layout-cell-6 {
     --animation-custom_in-translate_y: -300px;
-    min-height: 195px;
   }
 }
 

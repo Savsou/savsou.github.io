@@ -44260,29 +44260,36 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-menu-1 {
-  margin: -69px 0 22px auto;
+  margin: -69px 0 0 auto;
 }
 
 .u-header .u-nav-1 {
   font-size: 1rem;
+  letter-spacing: normal;
 }
 
 .u-header .u-nav-2 {
   font-size: 1.25rem;
 }
+
+.u-header .u-btn-1 {
+  background-image: none;
+  border-style: solid;
+  font-weight: 700;
+  font-size: 1.875rem;
+  margin: -40px auto 18px 78px;
+  padding: 0;
+}
 @media (max-width: 1199px) {
   .u-header .u-image-1 {
-    margin-left: -37px;
     width: 148px;
     height: 148px;
+    margin-left: -37px;
   }
 
-  .u-header .u-menu-1 {
-    width: auto;
-  }
-
-  .u-header .u-nav-1 {
-    letter-spacing: normal;
+  .u-header .u-btn-1 {
+    margin-top: -40px;
+    margin-left: 0;
   }
 }
 

@@ -140,8 +140,7 @@
   --animation-custom_in-opacity: 0;
   --animation-custom_in-rotate: 0deg;
   --animation-custom_in-scale: 1;
-  width: 813px;
-  margin: 18px auto 0;
+  margin: 18px 54px 0;
 }
 
 .u-section-2 .u-list-1 {
@@ -430,6 +429,7 @@
   .u-section-2 .u-text-2 {
     margin-left: 64px;
     margin-right: 64px;
+    width: 813px;
   }
 
   .u-section-2 .u-list-1 {

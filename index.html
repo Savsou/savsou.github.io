@@ -537,13 +537,19 @@
                     </div>
 
                     <div class="u-align-left u-form-group u-form-submit">
-                      <a href="javascript:void(0);" onclick="document.getElementById('contact-form').submit();"
-                        class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-2 u-palette-1-dark-1 u-radius u-text-body-alt-color u-btn-1">Submit</a>
+                      <!-- Using <a> as the submit button -->
+                      <a href="javascript:void(0);" onclick="validateForm();"
+                        class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-2 u-palette-1-dark-1 u-radius u-text-body-alt-color u-btn-1">
+                        Submit
+                      </a>
                     </div>
+
                     <div class="u-form-send-message u-form-send-success" id="success-message" style="display: none;">
-                      Thank you! Your message has been sent. </div>
-                    <div class="u-form-send-error u-form-send-message" id="error-message" style="display: none;"> Unable
-                      to send your message. Please fix errors then try again. </div>
+                      Thank you! Your message has been sent.
+                    </div>
+                    <div class="u-form-send-error u-form-send-message" id="error-message" style="display: none;">
+                      Unable to send your message. Please fix errors then try again.
+                    </div>
                   </form>
                 </div>
               </div>
@@ -555,37 +561,22 @@
   </section>
 
   <script>
-    // Handle form submission and error/success messages
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent form from submitting immediately
+    function validateForm() {
+      // Get form fields
+      var name = document.getElementById('name-3b9a').value;
+      var email = document.getElementById('email-3b9a').value;
+      var message = document.getElementById('message-3b9a').value;
 
-      // Reset error and success messages
-      document.getElementById('error-message').style.display = 'none';
-      document.getElementById('success-message').style.display = 'none';
-
-      // Form submission via Formspree
-      var form = document.getElementById('contact-form');
-      var formData = new FormData(form);
-
-      fetch(form.action, {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => {
-          if (response.ok) {
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-            form.reset(); // Reset form fields
-          } else {
-            // Show error message if there was an issue
-            document.getElementById('error-message').style.display = 'block';
-          }
-        })
-        .catch(error => {
-          // Show error message if the request fails
-          document.getElementById('error-message').style.display = 'block';
-        });
-    });
+      // Check if any field is empty
+      if (name === "" || email === "" || message === "") {
+        // Display error message if fields are empty
+        document.getElementById('error-message').style.display = 'block';
+        return false; // Prevent form submission
+      } else {
+        // If all fields are filled, submit the form
+        document.getElementById('contact-form').submit();
+      }
+    }
   </script>
 
 

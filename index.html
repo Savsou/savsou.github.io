@@ -520,27 +520,33 @@
                   <form action="https://formspree.io/f/xzzdvkyp" method="POST"
                     class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 0px;" name="form"
                     id="contact-form">
-                    <input type="hidden" name="_next"
-                      value="https://savsou.github.io/#carousel_ae35/contact?success=true">
 
                     <div class="u-form-group u-form-name">
                       <label for="name-3b9a" class="u-form-control-hidden u-label">Name</label>
                       <input type="text" placeholder="Enter your Name" id="name-3b9a" name="name"
                         class="u-input u-input-rectangle u-radius-20 u-input-1" required="">
+                      <span class="error-message" id="name-error" style="color: red; display: none;">Please enter your
+                        name.</span>
                     </div>
+
                     <div class="u-form-email u-form-group">
                       <label for="email-3b9a" class="u-form-control-hidden u-label">Email</label>
                       <input type="email" placeholder="Enter a valid email address" id="email-3b9a" name="email"
                         class="u-input u-input-rectangle u-radius-20 u-input-2" required="">
+                      <span class="error-message" id="email-error" style="color: red; display: none;">Please enter a
+                        valid email.</span>
                     </div>
+
                     <div class="u-form-group u-form-message">
                       <label for="message-3b9a" class="u-form-control-hidden u-label">Message</label>
                       <textarea placeholder="Enter your message" rows="4" cols="50" id="message-3b9a" name="message"
                         class="u-input u-input-rectangle u-radius-20 u-input-3" required=""></textarea>
+                      <span class="error-message" id="message-error" style="color: red; display: none;">Please enter a
+                        message.</span>
                     </div>
 
                     <div class="u-align-left u-form-group u-form-submit">
-                      <a href="javascript:void(0);" onclick="validateForm();"
+                      <a href="#" onclick="validateAndSubmit();"
                         class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-dark-2 u-palette-1-dark-1 u-radius u-text-body-alt-color u-btn-1">
                         Submit
                       </a>
@@ -552,6 +558,7 @@
                     <div class="u-form-send-error u-form-send-message" id="error-message" style="display: none;">
                       Unable to send your message. Please fix errors then try again.
                     </div>
+
                   </form>
                 </div>
               </div>
@@ -563,38 +570,48 @@
   </section>
 
   <script>
-    function validateForm() {
-      var name = document.getElementById('name-3b9a').value;
-      var email = document.getElementById('email-3b9a').value;
-      var message = document.getElementById('message-3b9a').value;
+    function validateAndSubmit() {
+      let name = document.getElementById('name-3b9a').value.trim();
+      let email = document.getElementById('email-3b9a').value.trim();
+      let message = document.getElementById('message-3b9a').value.trim();
+      let isValid = true;
 
-      if (name === "" || email === "" || message === "") {
-        document.getElementById('error-message').style.display = 'block';
-        return false;
-      } else {
+      // Clear previous errors
+      document.getElementById('name-error').style.display = 'none';
+      document.getElementById('email-error').style.display = 'none';
+      document.getElementById('message-error').style.display = 'none';
+
+      // Validate fields
+      if (name === '') {
+        document.getElementById('name-error').style.display = 'block';
+        isValid = false;
+      }
+      if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      }
+      if (message === '') {
+        document.getElementById('message-error').style.display = 'block';
+        isValid = false;
+      }
+
+      // If valid, submit the form and store success flag
+      if (isValid) {
+        localStorage.setItem('formSubmitted', 'true');
         document.getElementById('contact-form').submit();
       }
     }
 
-    // Function to check if ?success=true is in the URL
-    function checkSuccess() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('success')) {
-        document.getElementById('success-message').style.display = 'block';
-
-        // Reset form after showing success message
-        document.getElementById('contact-form').reset();
-
-        // Remove 'success' from URL to avoid showing it again on page refresh
-        setTimeout(() => {
-          window.history.replaceState({}, document.title, window.location.pathname);
-        }, 2000);
+    // Check if form was submitted successfully after returning from captcha
+    window.addEventListener('load', function () {
+      if (localStorage.getItem('formSubmitted') === 'true') {
+        document.getElementById('success-message').style.display = 'block'; // Show success message
+        document.getElementById('contact-form').reset(); // Reset form
+        localStorage.removeItem('formSubmitted'); // Remove flag so it doesn't persist
       }
-    }
-
-    // Run the function when the page loads
-    window.onload = checkSuccess;
+    });
   </script>
+
 
 
   <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-0f55">

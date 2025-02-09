@@ -596,22 +596,12 @@
 
       // If valid, submit the form
       if (isValid) {
-        fetch("https://formspree.io/f/xzzdvkyp", {
-          method: 'POST',
-          body: new FormData(document.getElementById('contact-form'))
-        }).then(response => {
-          if (response.ok) {
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-            document.getElementById('contact-form').reset(); // Reset form
-          } else {
-            // Show error message
-            document.getElementById('error-message').style.display = 'block';
-          }
-        }).catch(() => {
-          // Handle error if fetch fails
-          document.getElementById('error-message').style.display = 'block';
-        });
+        // Show success message and reset form first
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('contact-form').reset(); // Reset form fields after submission
+
+        // Submit the form to trigger CAPTCHA and Formspree submission
+        document.getElementById('contact-form').submit();
       }
     }
   </script>

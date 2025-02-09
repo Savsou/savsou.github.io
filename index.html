@@ -558,7 +558,6 @@
                     <div class="u-form-send-error u-form-send-message" id="error-message" style="display: none;">
                       Unable to send your message. Please fix errors then try again.
                     </div>
-
                   </form>
                 </div>
               </div>
@@ -595,22 +594,28 @@
         isValid = false;
       }
 
-      // If valid, submit the form and store success flag
+      // If valid, submit the form
       if (isValid) {
-        localStorage.setItem('formSubmitted', 'true');
-        document.getElementById('contact-form').submit();
+        fetch("https://formspree.io/f/xzzdvkyp", {
+          method: 'POST',
+          body: new FormData(document.getElementById('contact-form'))
+        }).then(response => {
+          if (response.ok) {
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('contact-form').reset(); // Reset form
+          } else {
+            // Show error message
+            document.getElementById('error-message').style.display = 'block';
+          }
+        }).catch(() => {
+          // Handle error if fetch fails
+          document.getElementById('error-message').style.display = 'block';
+        });
       }
     }
-
-    // Check if form was submitted successfully after returning from captcha
-    window.addEventListener('load', function () {
-      if (localStorage.getItem('formSubmitted') === 'true') {
-        document.getElementById('success-message').style.display = 'block'; // Show success message
-        document.getElementById('contact-form').reset(); // Reset form
-        localStorage.removeItem('formSubmitted'); // Remove flag so it doesn't persist
-      }
-    });
   </script>
+
 
 
 
